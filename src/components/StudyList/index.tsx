@@ -1,5 +1,5 @@
 import React from 'react';
-import react from 'react';
+import '../../styles/studyListStyles.scss';
 
 function StudyList() {
     const studyItem = [
@@ -21,11 +21,11 @@ function StudyList() {
 ];
 
     return(
-        <aside>
+        <aside className='studyList'>
             <h2>Estudos do Dia:</h2>
             <ul>
                 {studyItem.map((studyItem, index) => (
-                    <li key={index}>
+                    <li key={index} className='item'>
                         <h3>{studyItem.taskName}</h3>
                         <span>{studyItem.time}</span>
                     </li>
