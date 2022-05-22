@@ -2,6 +2,7 @@ import React from 'react';
 import StudyButton from '../StudyButton';
 import style from '../../styles/studyForm.module.scss';
 import { ITasks } from '../../types/ITask';
+import { v4 as uuidv4} from 'uuid';
 
 class StudyForm extends React.Component<{
     setTasks: React.Dispatch<React.SetStateAction<ITasks[]>>
@@ -11,10 +12,30 @@ class StudyForm extends React.Component<{
         time: '00:00'
     }
 
+    defaultState =  {
+        taskName: '',
+        time: '00:00'
+    }
+    selected = false;
+    completed = false;
+
     addTask(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
-        this.props.setTasks(oldTasks => [...oldTasks, {...this.state}])
+        this.props.setTasks(oldTasks =>
+            [
+                ...oldTasks,
+                {
+                    id: uuidv4(),
+                    ...this.state,
+                    selected: false,
+                    completed: false,
+                }
+            ]
+        )
+
+        this.setState(this.defaultState)
     }
+
     render() {
         return (
             <form className={style.newTask} onSubmit={this.addTask.bind(this)}>
