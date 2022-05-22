@@ -7,11 +7,27 @@ import style from '../styles/view.module.scss';
 
 function App() {
   const [tasks, setTasks] = useState<ITasks[]>([]);
+  const [selected, setSelected] = useState<ITasks>();
+
+  function selectTask(selectedTask : ITasks) {
+    setSelected(selectedTask);
+
+    setTasks(oldTasks => oldTasks.map(tasks => (
+      {
+        ...tasks,
+        selected: tasks.id === selectedTask.id? true : false,
+      }
+    )));
+
+  }
 
   return (
     <div className={style.AppStyle}>
       <StudyForm setTasks={ setTasks }/>
-      <StudyList taskList={ tasks }/>
+      <StudyList
+        taskList={ tasks }
+        selectTask= {selectTask}
+      />
       <StudyCronometer />
     </div>
   );
