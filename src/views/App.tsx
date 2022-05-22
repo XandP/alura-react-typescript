@@ -25,10 +25,10 @@ function App() {
     <div className={style.AppStyle}>
       <StudyForm setTasks={ setTasks }/>
       <StudyList
-        taskList={ tasks }
-        selectTask= {selectTask}
+        taskList= { tasks }
+        selectTask= { selectTask }
       />
-      <StudyCronometer />
+      <StudyCronometer selected={ selected }/>
     </div>
   );
 }

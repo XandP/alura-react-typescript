@@ -7,6 +7,7 @@ class StudyButton extends React.Component<{
 }> {
     render() {
         const { type = "button" } = this.props;
+
         return(
             <button type={type} className={style.studyButton}>
                 {this.props.children}

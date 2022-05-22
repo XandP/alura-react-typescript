@@ -1,4 +1,4 @@
-import style from '../../../styles/studyList.module.scss';
+import style from '../../../styles/studyListItem.module.scss';
 import { ITasks } from '../../../types/ITask';
 
 
