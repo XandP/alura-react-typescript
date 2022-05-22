@@ -1,5 +1,5 @@
-import React from 'react';
-import '../../styles/studyListStyles.scss';
+import Item from './Item';
+import study from '../../styles/studyList.module.scss';
 
 function StudyList() {
     const studyItem = [
@@ -21,14 +21,14 @@ function StudyList() {
 ];
 
     return(
-        <aside className='studyList'>
+        <aside className={study.studyList}>
             <h2>Estudos do Dia:</h2>
             <ul>
-                {studyItem.map((studyItem, index) => (
-                    <li key={index} className='item'>
-                        <h3>{studyItem.taskName}</h3>
-                        <span>{studyItem.time}</span>
-                    </li>
+                {studyItem.map((item, index) => (
+                    <Item
+                        key={index}
+                        {...item}
+                    />
                 ))}
             </ul>
 
