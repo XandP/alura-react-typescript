@@ -1,30 +1,15 @@
 import Item from './Item';
-import study from '../../styles/studyList.module.scss';
+import style from '../../styles/studyList.module.scss';
+import { ITasks } from '../../types/ITask';
 
-function StudyList() {
-    const studyItem = [
-    {
-        taskName: 'React',
-        time: '02:00:00'
-    },
-
-    {
-        taskName: 'JS',
-        time: '01:00:00'
-    },
-
-    {
-        taskName: 'TypeScript',
-        time: '03:00:00'
-    },
-
-];
+function StudyList({taskList}: {taskList: ITasks[]}) {
 
     return(
-        <aside className={study.studyList}>
-            <h2>Estudos do Dia:</h2>
+        <aside className={style.studyList}>
             <ul>
-                {studyItem.map((item, index) => (
+            <h2>
+                Estudos do Dia:</h2>
+                {taskList.map((item, index) => (
                     <Item
                         key={index}
                         {...item}
