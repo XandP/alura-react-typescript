@@ -21,6 +21,22 @@ function App() {
 
   }
 
+  function endTask() {
+    if (selected) {
+      setSelected(undefined);
+      setTasks(oldTasks => oldTasks.map(task => {
+        if (task.id === selected.id) {
+          return {
+            ...task,
+            selected: false,
+            completed: true
+          }
+        }
+        return task;
+      }));
+    }
+  }
+
   return (
     <div className={style.AppStyle}>
       <StudyForm setTasks={ setTasks }/>
@@ -28,7 +44,10 @@ function App() {
         taskList= { tasks }
         selectTask= { selectTask }
       />
-      <StudyCronometer selected={ selected }/>
+      <StudyCronometer
+        selected={ selected }
+        endTask={ endTask }
+        />
     </div>
   );
 }
