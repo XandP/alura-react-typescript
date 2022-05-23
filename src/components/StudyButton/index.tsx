@@ -1,20 +1,20 @@
 import React from 'react';
 import style from '../../styles/studyButton.module.scss';
 
-class StudyButton extends React.Component<{
-    children: any,
+interface Props {
+    children?: React.ReactNode
     type?: "button"|"submit"|"reset"| undefined,
     onClick?: () => void
-}> {
-    render() {
-        const { type = "button", onClick } = this.props;
-
-        return(
-            <button onClick={onClick} type={type} className={style.studyButton}>
-                {this.props.children}
-            </button>
-        )
-    }
 }
 
-export default StudyButton;
+export default function StudyButton({ type, onClick, children }: Props) {
+    return(
+        <button
+            onClick={onClick}
+            type={type}
+            className={style.studyButton}
+        >
+            {children}
+        </button>
+    )
+}
